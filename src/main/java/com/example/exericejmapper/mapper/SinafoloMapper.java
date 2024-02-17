@@ -1,4 +1,4 @@
-package com.example.exericejmapper.api;
+package com.example.exericejmapper.mapper;
 
 import com.googlecode.jmapper.JMapper;
 import com.googlecode.jmapper.api.enums.MappingType;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class SinafoloMapper {
     private final SinafoloMapperAPI sinafoloMapperAPI;
+    private final StructureComptableMapper structureComptableMapper;
     /**
      * Méthode pour le mappage des beans et des entités.
      *
@@ -27,7 +28,7 @@ public class SinafoloMapper {
      * @return T
      */
     public <T, U> T map(final U source, final Class<T> destination) {
-        JMapper<T, U> jMapper = new JMapper<>(destination, (Class<U>) source.getClass(), sinafoloMapperAPI.jMapperAPI());
-        return jMapper.getDestination(source, NullPointerControl.SOURCE, MappingType.ALL_FIELDS);
+            JMapper<T, U> jMapper = new JMapper<>(destination, (Class<U>) source.getClass(), sinafoloMapperAPI.jMapperAPI());
+            return jMapper.getDestination(source, NullPointerControl.SOURCE, MappingType.ONLY_VALUED_FIELDS);
     }
 }
