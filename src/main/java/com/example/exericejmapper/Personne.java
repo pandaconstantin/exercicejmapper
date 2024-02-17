@@ -11,7 +11,8 @@ import lombok.ToString;
 @Table(name = "personne")
 public class Personne {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "id_personne_sequence", sequenceName = "id_personne_sequence", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(generator = "id_personne_sequence")
     @Column(name = "id", nullable = false)
     private Long id;
     private String nom;

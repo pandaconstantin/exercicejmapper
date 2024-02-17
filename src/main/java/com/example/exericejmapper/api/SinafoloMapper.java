@@ -28,6 +28,6 @@ public class SinafoloMapper {
      */
     public <T, U> T map(final U source, final Class<T> destination) {
         JMapper<T, U> jMapper = new JMapper<>(destination, (Class<U>) source.getClass(), sinafoloMapperAPI.jMapperAPI());
-        return jMapper.getDestination(source, NullPointerControl.SOURCE, MappingType.ALL_FIELDS);
+        return jMapper.getDestination(source, NullPointerControl.SOURCE, MappingType.ONLY_VALUED_FIELDS);
     }
 }

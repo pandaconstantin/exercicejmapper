@@ -1,8 +1,6 @@
 package com.example.exericejmapper.controller;
 
-import com.example.exericejmapper.AdresseDto;
-import com.example.exericejmapper.PersonneDto;
-import com.example.exericejmapper.PersonneSplitAdresseDto;
+import com.example.exericejmapper.*;
 import com.example.exericejmapper.service.GestionPersonneService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -44,5 +42,35 @@ public class GestionPersonneController {
     @GetMapping(path = "/personnesplit")
     public ResponseEntity<List<PersonneSplitAdresseDto>> getListePersonneSplits() {
         return new ResponseEntity<>(gestionPersonneService.getListePersonneSplits(), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/personnecomplexe")
+    public ResponseEntity<PersonneComplexeDto> createPersonneComplexe(@RequestBody final PersonneComplexeDto payload) {
+        return new ResponseEntity<>(gestionPersonneService.createPersonneComplexe(payload), HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/personnecomplexe")
+    public ResponseEntity<List<PersonneComplexeDto>> getListePersonneComplexes() {
+        return new ResponseEntity<>(gestionPersonneService.getListePersonneComplexes(), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/structurecomplexe")
+    public ResponseEntity<StructureComptableComplexeDto> createStructureComplexe(@RequestBody final StructureComptableComplexeDto payload) {
+        return new ResponseEntity<>(gestionPersonneService.createStructureComplexe(payload), HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/structurecomplexe")
+    public ResponseEntity<List<StructureComptableComplexeDto>> getListeStructureComplexes() {
+        return new ResponseEntity<>(gestionPersonneService.getListeStructureComplexes(), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/structure")
+    public ResponseEntity<StructureComptableDto> createStructureComptable(@RequestBody final StructureComptableDto payload) {
+        return new ResponseEntity<>(gestionPersonneService.createStructure(payload), HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/structure")
+    public ResponseEntity<List<StructureComptableDto>> getListeStructureComptable() {
+        return new ResponseEntity<>(gestionPersonneService.getListeStructures(), HttpStatus.OK);
     }
 }
